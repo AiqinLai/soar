@@ -2,7 +2,7 @@ language: go
 
 go:
   - "1.10"
-  - master
+  - "1.11.x"
 
 sudo: required
 
@@ -20,10 +20,13 @@ services:
 
 before_install:
   - docker pull mysql
+  - go get github.com/twitchtv/retool
+  - retool sync
+  - retool do gometalinter.v2 intall
 
 script:
-  - make build
   - make docker
+  - make lint
   - make cover
 
 after_success:
