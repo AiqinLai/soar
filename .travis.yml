@@ -6,10 +6,13 @@ go_import_path: github.com/XiaoMi/soar
 go:
   - "1.10"
 
+before_install:
+  - docker pull mysql
+  - make docker
+
 script:
   - make build
-  - make docker
-  - make test
+  - make cover
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
