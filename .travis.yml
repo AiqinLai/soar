@@ -7,8 +7,8 @@ go:
   - "1.10"
 
 script:
-  - make fmt
-  - make tidb-parser
+  - make build
+  - make docker
   - make test
 
 after_success:
